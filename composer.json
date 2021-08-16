@@ -1,0 +1,28 @@
+{
+    "name": "wang-tech-commits/laravel-searchable",
+    "description": "laravel全局搜索",
+    "license": "MIT",
+    "homepage": "https://github.com/wang-tech-commits/laravel-searchable",
+    "authors": [
+        {
+            "name": "Mr.wang",
+            "email": "15124532157@163.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "laravel/framework": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "MrwangTc\\Searchable\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MrwangTc\\Searchable\\ServiceProvider"
+            ]
+        }
+    }
+}
