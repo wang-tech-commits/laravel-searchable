@@ -22,25 +22,21 @@ trait Searchable
         return $this->morphOne(\config('searchable.search_model'), 'searchable');
     }
 
-    public function getSearchModel(): string
-    {
-        return config('searchable.search_model');
-    }
-
     /**
      * Notes   : 创建或修改search模型
-     * @Date   : 2021/8/17 11:45
+     * @Date   : 2021/8/17 14:27
      * @Author : Mr.wang
+     * @param  string  $title
      * @param  string  $keywords
      * @return mixed
      */
-    protected function searchForModel($keywords = '')
+    protected function searchForModel($title = '', $keywords = '')
     {
         $searchClass = $this->getSearchModel();
 
         $search = new $searchClass();
 
-        $search->title            = $this->title;
+        $search->title            = $title ?? $this->title;
         $search->keywords         = $keywords;
         $search->searchable_id    = $this->getKey();
         $search->versionable_type = $this->getMorphClass();
@@ -49,6 +45,11 @@ trait Searchable
 
         return $search;
 
+    }
+
+    public function getSearchModel(): string
+    {
+        return config('searchable.search_model');
     }
 
 }
