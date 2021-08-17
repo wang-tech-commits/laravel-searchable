@@ -36,10 +36,10 @@ trait Searchable
 
         $search = new $searchClass();
 
-        $search->title            = $title ?? $this->title;
-        $search->keywords         = $keywords;
-        $search->searchable_id    = $this->getKey();
-        $search->versionable_type = $this->getMorphClass();
+        $search->title           = $title ?? $this->title;
+        $search->keywords        = $keywords;
+        $search->searchable_id   = $this->getKey();
+        $search->searchable_type = $this->getMorphClass();
 
         $search->save();
 
