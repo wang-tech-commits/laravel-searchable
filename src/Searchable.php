@@ -34,14 +34,10 @@ trait Searchable
     {
         $searchClass = $this->getSearchModel();
 
-        $search = new $searchClass();
-
-        $search->title            = $title ?? $this->title;
-        $search->keywords         = $keywords;
-        $search->searchable_id    = $this->getKey();
-        $search->versionable_type = $this->getMorphClass();
-
-        $search->save();
+        $search = $searchClass::updateOrCreate(
+            ['searchable_id' => $this->getKey(), 'searchable_type' => $this->getMorphClass()],
+            ['title' => $title ?? $this->title, 'keywords' => $keywords]
+        );
 
         return $search;
 
