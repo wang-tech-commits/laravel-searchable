@@ -24,19 +24,20 @@ trait Searchable
 
     /**
      * Notes   : 创建或修改search模型
-     * @Date   : 2021/8/17 14:27
+     * @Date   : 2021/8/19 9:14
      * @Author : Mr.wang
      * @param  string  $title
      * @param  string  $keywords
+     * @param  string  $extends
      * @return mixed
      */
-    protected function searchForModel($title = '', $keywords = '')
+    protected function searchForModel($title = '', $keywords = '', $extends = '')
     {
         $searchClass = $this->getSearchModel();
 
         $search = $searchClass::updateOrCreate(
             ['searchable_id' => $this->getKey(), 'searchable_type' => $this->getMorphClass()],
-            ['title' => $title ?? $this->title, 'keywords' => $keywords]
+            ['title' => $title ?? $this->title, 'keywords' => $keywords, 'extends' => $extends]
         );
 
         return $search;

@@ -16,6 +16,7 @@ class CreateSearchesTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('keywords')->nullable();
+            $table->longText('extends')->comment('附加值')->nullable();
             $table->morphs('searchable');
             $table->timestamps();
             $table->softDeletes();
